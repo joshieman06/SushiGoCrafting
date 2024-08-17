@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -154,10 +153,10 @@ public class FoodItem extends SushiItem {
         return entity.eat(worldIn, stack);
     }
 
-    @Nullable
     @Override
-    public FoodProperties getFoodProperties() {
-        return new FoodProperties.Builder().nutrition(getIngredientList().stream().mapToInt(IFoodIngredient::getHungerValue).sum()).saturationMod(getIngredientList().stream().mapToInt(IFoodIngredient::getSaturationValue).sum()).build();
+    public @org.jetbrains.annotations.Nullable FoodProperties getFoodProperties(ItemStack stack, @org.jetbrains.annotations.Nullable LivingEntity entity) {
+        var info = new Info(stack, true);
+        return new FoodProperties.Builder().nutrition((int) Math.floor(info.getHunger())).saturationMod(info.getSaturation()).build();
     }
 
     public static class Info {
@@ -186,7 +185,7 @@ public class FoodItem extends SushiItem {
             }
             FoodItem foodItem = (FoodItem) stack.getItem();
             this.hunger = foodItem.getIngredientList().stream().map(IFoodIngredient::getHungerValue).mapToInt(Integer::intValue).sum() * getFoodModifierValue(negative, positive);
-            this.saturation = foodItem.getIngredientList().stream().map(IFoodIngredient::getSaturationValue).mapToInt(Integer::intValue).sum() * getFoodModifierValue(negative, positive);
+            this.saturation = (foodItem.getIngredientList().stream().map(IFoodIngredient::getSaturationValue).mapToInt(Integer::intValue).sum() * getFoodModifierValue(negative, positive)) / (foodItem.ingredientList.size() + 2);
             if (calculateEffects) {
                 List<IFoodIngredient> foodIngredients = new ArrayList<>(foodItem.getIngredientList());
                 if (stack.hasTag() && stack.getTagElement(FoodItem.SPICES_TAG) != null) {

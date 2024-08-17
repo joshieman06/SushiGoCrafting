@@ -102,6 +102,7 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:appleskin-248787:3395800")
     implementation fg.deobf("curse.maven:patchouli-306770:4636277")
     compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-1.20.1:14.0.12")
+    implementation fg.deobf("curse.maven:appleskin-248787:4770828")
     //runtimeOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:9.1.103")
 }
 
