@@ -34,7 +34,7 @@ jobs:
           files-secondary: build/libs/*-@(dev|sources).jar
           version-type: beta
           version: ${{ github.ref_name }}
-          loaders: forge
+          loaders: neoforge
           game-versions: |
             1.21
             1.21.1

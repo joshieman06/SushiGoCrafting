@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "patchouli"
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
@@ -12,8 +18,8 @@
     }
   ],
   "result": {
-    "item": "patchouli:guide_book",
-    "nbt": {
+    "id": "patchouli:guide_book",
+    "components": {
       "patchouli:book": "sushigocrafting:sushigocrafting"
     }
   }
