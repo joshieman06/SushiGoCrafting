@@ -1,8 +1,10 @@
 package com.buuz135.sushigocrafting.proxy;
 
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
 
 public class SushiCompostables {
 
@@ -26,8 +28,8 @@ public class SushiCompostables {
     }
 
     @SafeVarargs
-    private static void register(float chance, RegistryObject<? extends ItemLike>... items) {
-        for (RegistryObject<? extends ItemLike> item : items) {
+    private static void register(float chance, DeferredHolder<Item, ? extends ItemLike>... items) {
+        for (DeferredHolder<Item, ? extends ItemLike> item : items) {
             register(item.get(), chance);
         }
     }
