@@ -59,8 +59,8 @@ public class ClientProxy {
             event.register(ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath(SushiGoCrafting.MOD_ID, "block/tuna_back")));
         }).subscribe();
         EventManager.mod(ModelEvent.BakingCompleted.class).process(event -> {
-            SALMON_BACK = event.getModels().get(ResourceLocation.fromNamespaceAndPath(SushiGoCrafting.MOD_ID, "block/salmon_back"));
-            TUNA_BACK = event.getModels().get(ResourceLocation.fromNamespaceAndPath(SushiGoCrafting.MOD_ID, "block/tuna_back"));
+            SALMON_BACK = event.getModels().get(ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath(SushiGoCrafting.MOD_ID, "block/salmon_back")));
+            TUNA_BACK = event.getModels().get(ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath(SushiGoCrafting.MOD_ID, "block/tuna_back")));
         }).subscribe();
     }
 

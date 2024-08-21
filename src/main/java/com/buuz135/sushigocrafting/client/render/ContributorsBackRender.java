@@ -50,6 +50,7 @@ public class ContributorsBackRender extends RenderLayer<AbstractClientPlayer, Pl
 
     @Override
     public void render(PoseStack stack, MultiBufferSource buffer, int p_225628_3_, AbstractClientPlayer entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+        if (entitylivingbaseIn.isInvisible()) return;
         if (!ClientRewardStorage.REWARD_STORAGE.getRewards().containsKey(entitylivingbaseIn.getUUID())) return;
         if (!ClientRewardStorage.REWARD_STORAGE.getRewards().get(entitylivingbaseIn.getUUID()).getEnabled().containsKey(ResourceLocation.fromNamespaceAndPath(SushiGoCrafting.MOD_ID, "back")))
             return;
