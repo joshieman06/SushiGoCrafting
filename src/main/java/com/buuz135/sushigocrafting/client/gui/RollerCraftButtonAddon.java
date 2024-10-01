@@ -56,7 +56,7 @@ public class RollerCraftButtonAddon extends BasicButtonAddon {
             Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(SoundEvents.UI_BUTTON_CLICK.get(), SoundSource.PLAYERS, 0.2F, 1.0F, Minecraft.getInstance().level.getRandom(), Minecraft.getInstance().player.blockPosition()));
             ILocatable locatable = (ILocatable) ((AbstractContainerScreen) screen).getMenu();
             CompoundTag nbt = new CompoundTag();
-            nbt.putInt("Button", button);
+            nbt.putInt(String.valueOf(Component.translatable("text.sushigocrafting.button")), button);
             Titanium.NETWORK.get().sendToServer(new ButtonClickNetworkMessage(locatable.getLocatorInstance(), this.getButton().getId(), nbt));
             return true;
         }
@@ -65,7 +65,7 @@ public class RollerCraftButtonAddon extends BasicButtonAddon {
 
     @Override
     public List<Component> getTooltipLines() {
-        return Arrays.asList(Component.literal("Roll"), Component.literal(ChatFormatting.DARK_GRAY + "*Left Click to make 1*"), Component.literal(ChatFormatting.DARK_GRAY + "*Right Click to make 64*"));
+        return Arrays.asList(Component.translatable("text.sushigocrafting.roll"), Component.literal(ChatFormatting.DARK_GRAY + "*" + Component.translatable("text.sushigocrafting.make_one") + "*"), Component.literal(ChatFormatting.DARK_GRAY + "*" + Component.translatable("text.sushigocrafting.make_64") + "*"));
     }
 
     @Override
